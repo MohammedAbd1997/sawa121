@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1016597708125",
+    "project_id": "sawa121-f40ed",
+    "storage_bucket": "sawa121-f40ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016597708125:android:bb756043eba2fe065cbcb4",
+        "android_client_info": {
+          "package_name": "com.mss.sawa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016597708125-43ts9p4lelptsnlbn8gul2fi5glt15b2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mss.sawa",
+            "certificate_hash": "2922b948bfc0095008549e92450d9c700ed21553"
+          }
+        },
+        {
+          "client_id": "1016597708125-44mpr2qd4u2kpf9hcnh3qbh5fo12e6tm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAacjzIUvM0EhVv1UcGMQWXI05LXpBFjZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016597708125-44mpr2qd4u2kpf9hcnh3qbh5fo12e6tm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
