@@ -5,11 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:sawa/src/data/reomte/api_requests.dart';
 import 'package:sawa/src/data/shared_preferences/pref_manger.dart';
 import 'package:sawa/src/entities/appointment_model.dart';
 import 'package:sawa/src/entities/day_model.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:sawa/src/entities/day_response.dart';
 import 'package:sawa/src/entities/medical_form_response.dart';
 import 'package:sawa/src/modules/dilaogs/delete_appointment_dialog.dart';
@@ -113,7 +117,7 @@ class DoctorLogic extends GetxController {
   }
 
   void getMedicalForm() async {
-    if(!await _prefManger.getIsLogin()){
+    if (!await _prefManger.getIsLogin()) {
       Get.offNamed('/login');
       return;
     }
@@ -142,13 +146,13 @@ class DoctorLogic extends GetxController {
             ? selectedSmokeValue = 3
             : selectedSmokeValue = 4;
 
-        if (medicalFormResponse!.history!.contains("متزوج"))
+        if (medicalFormResponse!.history!.contains("Married".tr()))
           selectedSocialStatusValue = 1;
-        if (medicalFormResponse!.history!.contains("اعزب"))
+        if (medicalFormResponse!.history!.contains("single".tr()))
           selectedSocialStatusValue = 2;
-        if (medicalFormResponse!.history!.contains("مطلق"))
+        if (medicalFormResponse!.history!.contains("Divorced".tr()))
           selectedSocialStatusValue = 3;
-        if (medicalFormResponse!.history!.contains("ارمل"))
+        if (medicalFormResponse!.history!.contains("Widower".tr()))
           selectedSocialStatusValue = 4;
 
         //birthDay =
@@ -164,8 +168,8 @@ class DoctorLogic extends GetxController {
   }
 
   void getNotAvailable(int index) async {
-    if(!await _prefManger.getIsLogin()){
-    //  Get.offNamed('/login');
+    if (!await _prefManger.getIsLogin()) {
+      //  Get.offNamed('/login');
       return;
     }
     appointmentsList = [
@@ -294,24 +298,24 @@ class DoctorLogic extends GetxController {
 
   void sendMedicalForm(bool isVideo) async {
     if (birthDay == null) {
-      Fluttertoast.showToast(msg: "تاريخ الميلاد مطلوب".tr);
+      Fluttertoast.showToast(msg: "Date_required".tr());
       return;
     }
     if (selectedSixValue == 0) {
-      Fluttertoast.showToast(msg: "يرجى تحديد الجنس".tr);
+      Fluttertoast.showToast(msg: "Please_gender".tr());
       return;
     }
     if (selectedSocialStatusValue == 0) {
-      Fluttertoast.showToast(msg: "يرجى تحديد الحالة الإجتماعية".tr);
+      Fluttertoast.showToast(msg: "Please_status".tr());
       return;
     }
     if (selectedSmokeValue == 0) {
-      Fluttertoast.showToast(msg: "يرجى ذكر هل انت مدخن أم لا".tr);
+      Fluttertoast.showToast(msg: "Please_smoker".tr());
       return;
     }
 
     if (selectedAppointment == null) {
-      Fluttertoast.showToast(msg: "يرجى اختيار موعد من المواعيد المتاحة".tr);
+      Fluttertoast.showToast(msg: "Please_dates".tr());
       return;
     }
     isSendFormLoading = true;
@@ -407,7 +411,7 @@ class DoctorLogic extends GetxController {
 
   String buildHistoryString() {
     if (selectedSocialStatusValue == 1) {
-      return 'متزوج';
+      return 'Married'.tr();
     } else if (selectedSocialStatusValue == 2) {
       return 'اعزب';
     } else if (selectedSocialStatusValue == 3) {
@@ -428,37 +432,37 @@ class DoctorLogic extends GetxController {
     switch (weekDay.weekday) {
       case 1:
         {
-          day = "الاثنين".tr;
+          day = "Monday".tr();
           break;
         }
       case 2:
         {
-          day = "الثلاتاء".tr;
+          day = "Tuesday".tr();
           break;
         }
       case 3:
         {
-          day = "الاربعاء".tr;
+          day = "Wenday".tr();
           break;
         }
       case 4:
         {
-          day = "الخميس".tr;
+          day = "Thursday".tr();
           break;
         }
       case 5:
         {
-          day = "الجمعة".tr;
+          day = "Friday".tr();
           break;
         }
       case 6:
         {
-          day = "السبت".tr;
+          day = "Saturday".tr();
           break;
         }
       case 7:
         {
-          day = "الأحد".tr;
+          day = "Sunday".tr();
           break;
         }
     }

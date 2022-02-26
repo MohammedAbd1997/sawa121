@@ -8,8 +8,9 @@ import 'data/shared_preferences/pref_manger.dart';
 class Binding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<PrefManger>(() => PrefManger());
     Get.lazyPut<ApiRequests>(() => ApiRequests());
     Get.lazyPut<MainLogic>(() => MainLogic());
+    Get.lazyPut<PrefManger>(() => PrefManger());
+
   }
 }

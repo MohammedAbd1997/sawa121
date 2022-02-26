@@ -1,43 +1,45 @@
-import 'package:get/get.dart';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
 class Validation {
 
   static String? commentValidate(val) {
-    return val!.isEmpty ? 'التعليق مطلوب'.tr : null;
+    return val!.isEmpty ? "Commentـrequired".tr() : null;
   }
 
   static String? nameValidate(val) {
-    return val!.isEmpty ? 'الاسم الكامل مطلوب'.tr : null;
+    return val!.isEmpty ? "Full_required".tr() : null;
   }
 
   static String? emailValidate(val) {
     return val!.isEmpty
-        ? 'البريد الإلكتروني مطلوب'.tr
+        ? "Email_required".tr()
         : !GetUtils.isEmail(val)
-            ? "البريد الالكتروني غير صالح".tr
+            ? "Invalid_email".tr()
             : null;
   }
 
   static String? whatsappValidate(val) {
     return val!.isEmpty
-        ? 'رقم الواتساب مطلوب'.tr
+        ? "WhatsApp_required".tr()
         : val.length != 12
-            ? "يجب ان يكون الرقم عن 12 أرقام".tr
+            ? "The_number_digits".tr()
             : null;
   }
   static String? phoneValidate(val) {
     return val!.isEmpty
-        ? 'رقم الهاتف مطلوب'.tr
+        ? "Phone_required".tr()
         : val.length != 10
-            ? "يجب ان يكون الرقم عن 10 أرقام".tr
+            ? "The_digits".tr()
             : null;
   }
 
   static String? passwordValidate(val) {
-    return val!.isEmpty ? 'كلمة المرور مطلوبة'.tr : null;
+    return val!.isEmpty ? "Password_required".tr() : null;
   }
   static String? filedValidate(val) {
-    return val!.isEmpty ? 'هذا الحقل مطلوب'.tr : null;
+    return val!.isEmpty ? "This_required".tr() : null;
   }
 
 }

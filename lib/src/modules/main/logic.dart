@@ -18,13 +18,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MainLogic extends GetxController {
   final ApiRequests _apiRequests = Get.find();
-  final PrefManger _prefManger = Get.find();
+  final PrefManger _prefManger = Get.put(PrefManger());
   bool isLoading = false;
   bool isLogoutLoading = false;
   User? user;
   List<CategoryResponse> categoriesList = [];
   CategoryResponse? selected;
-
 
   @override
   void onInit() {
@@ -112,10 +111,12 @@ class MainLogic extends GetxController {
       return;
     }
     var source = Platform.isIOS ? 'iOS' : 'Android';
-    launch("https://ticket.sawa.ps/#/send-report/" + source , forceSafariVC: false);
+    launch("https://ticket.sawa.ps/#/send-report/" + source,
+        forceSafariVC: false);
   }
 
   void logout() async {
+
     await _prefManger.setIsLogin(false);
     await _prefManger.setIsFirstTime(false);
 

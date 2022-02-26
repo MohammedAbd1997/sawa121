@@ -65,7 +65,7 @@ class RulesPage extends StatelessWidget {
                             color: primaryColor,
                           ),
                           const SizedBox(
-                            width: 30,
+                            width: 20,
                           ),
                           Expanded(
                               child: GetBuilder<RulesLogic>(builder: (logic) {

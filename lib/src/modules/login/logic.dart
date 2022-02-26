@@ -11,6 +11,7 @@ import 'package:sawa/src/modules/on_boarding/view.dart';
 import 'package:sawa/src/utils/error_handler/error_handler.dart';
 
 class LoginLogic extends GetxController {
+
   final ApiRequests _apiRequests = Get.find();
   final PrefManger _prefManger = Get.find();
   bool isLoading = false;
