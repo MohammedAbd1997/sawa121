@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">Sawa 121</string>
 
-    <string name="facebook_app_id">231282632356704</string>
-    <string name="fb_login_protocol_scheme">fb231282632356704</string>
+    <string name="facebook_app_id">1083175095586977</string>
+    <string name="fb_login_protocol_scheme">fb1083175095586977</string>
+
+
+
+
 </resources>
