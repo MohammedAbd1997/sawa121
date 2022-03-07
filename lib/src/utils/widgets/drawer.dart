@@ -12,9 +12,7 @@ import '../../../main.dart';
 import '../../constant.dart';
 
 class MyDrawer extends StatelessWidget {
-
   const MyDrawer({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +25,7 @@ class MyDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 DrawerHeader(
+                  padding: EdgeInsets.only(bottom: 15.h),
                   decoration: const BoxDecoration(
                     color: primaryColor,
                   ),
@@ -63,7 +62,7 @@ class MyDrawer extends StatelessWidget {
                                   color: Colors.white,
                                   fontSize: 14,
                                 ),
-                                CustomText(
+                                CustomTextNew(
                                   logic.user?.email,
                                   color: Colors.white,
                                   fontSize: 14,
