@@ -9,6 +9,7 @@ class RulesLogic extends GetxController {
   bool checked = false;
   bool isLoading = false;
   String rules = '';
+  String rulesEn = '';
 
   void changeChecked(val) {
     checked = val;
@@ -36,6 +37,24 @@ class RulesLogic extends GetxController {
     try {
       var response = await _apiRequests.getDoctorRules();
       rules = response.data['content'];
+      // log(instructions);
+    } catch (e) {
+      ErrorHandler.handleError(e);
+    }
+    isLoading = false;
+    update();
+  }
+
+  void getDoctorRulesEn() async {
+    if (!await _prefManger.getIsLogin()) {
+      Get.offNamed('/login');
+      return;
+    }
+    isLoading = true;
+    update();
+    try {
+      var response = await _apiRequests.getDoctorRules();
+      rulesEn = response.data['contentEn'];
       // log(instructions);
     } catch (e) {
       ErrorHandler.handleError(e);

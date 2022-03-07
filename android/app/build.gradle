@@ -27,6 +27,14 @@ apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/pc/Desktop/sawa.jks')
+            storePassword '123456'
+            keyAlias 'key01'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 31
 
     compileOptions {

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:sawa/src/data/reomte/api_requests.dart';
 import 'package:sawa/src/data/shared_preferences/pref_manger.dart';
@@ -125,8 +126,26 @@ class MainLogic extends GetxController {
     Get.offAll(SplashPage());
   }
 
+  Future<void> goToUrl() async {
+
+    if (Platform.isAndroid) {
+      await FlutterShare.share(
+          title: 'Sawa 121',
+          text: '',
+          linkUrl: 'https://play.google.com/store/apps/details?id=com.mss.sawa',
+          chooserTitle: 'Example Chooser Title');
+    } else if (Platform.isIOS) {
+      await FlutterShare.share(
+          title: 'Sawa 121',
+          text: '',
+          linkUrl: 'https://apps.apple.com/il/app/sawa121/id1531265764',
+          chooserTitle: 'Example Chooser Title');    }
+
+
+  }
+  /*
   goToUrl() async {
     goToSendReport();
     //await canLaunch("http://www.sawa121.org/") ? await launch("http://www.sawa121.org/") : log("message");
-  }
+  }*/
 }

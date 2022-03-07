@@ -7,16 +7,19 @@
 class SliderResponse {
   int? id;
   String? title;
+  String? titleEn;
   String? imgUrl;
   String? description;
+  String? descriptionEn;
   int? displayOrder;
 
   SliderResponse.fromJson(dynamic json) {
     id = json['id'];
     title = json['title'];
+    titleEn = json['titleEn'];
     imgUrl = json['imgUrl'];
     description = json['description'];
+    descriptionEn = json['descriptionEn'];
     displayOrder = json['displayOrder'];
   }
-
 }

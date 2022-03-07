@@ -58,7 +58,9 @@ class AboutUsPage extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       )
                     : CustomText(
-                        logic.aboutUsResponse?.aboutDtos?[0].content,
+                        context.locale == Locale('en')
+                            ? logic.aboutUsResponse!.aboutDtos![0].contentEn
+                            : logic.aboutUsResponse?.aboutDtos?[0].content,
                         textAlign: TextAlign.center,
                       );
               }),
@@ -87,10 +89,7 @@ class AboutUsPage extends StatelessWidget {
               const CustomSizedBox(
                 height: 20,
               ),
-              CustomText(
-                "developer_about".tr(),
-                textAlign: TextAlign.center,
-              ),
+
               const CustomSizedBox(
                 height: 20,
               ),
@@ -101,15 +100,15 @@ class AboutUsPage extends StatelessWidget {
               const CustomSizedBox(
                 height: 10,
               ),
-              CustomText("${"email".tr()} :         info@developers.ps"),
-              const CustomSizedBox(
-                height: 10,
-              ),
+            //  CustomText("${"email".tr()} :         info@developers.ps"),
+         //     const CustomSizedBox(
+        //        height: 10,
+    //          ),
               CustomText("${"Mobile_number".tr()} :   972592805007+"),
               const CustomSizedBox(
                 height: 10,
               ),
-              CustomText("${"phone_number".tr()} :   2472411"),
+          //    CustomText("${"phone_number".tr()} :   2472411"),
             ],
           ),
         ),

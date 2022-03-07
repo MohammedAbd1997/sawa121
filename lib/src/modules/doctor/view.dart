@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -60,7 +61,7 @@ class _DoctorPageState extends State<DoctorPage> {
         elevation: 1,
         foregroundColor: primaryColor,
       ),
-       drawer: kIsWeb ? null :const MyDrawer(),
+      drawer: kIsWeb ? null : const MyDrawer(),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
@@ -100,6 +101,9 @@ class _DoctorPageState extends State<DoctorPage> {
                                 ),
                               ),
                             ),
+                          ),
+                          SizedBox(
+                            width: 10.w,
                           ),
                           Expanded(
                             child: InkWell(
@@ -193,11 +197,31 @@ class _DoctorPageState extends State<DoctorPage> {
                                 const CustomSizedBox(
                                   height: 10,
                                 ),
-                                CustomTextFormFiled(
-                                  hint: "WhatsApp_number".tr(),
-                                  controller: logic.phoneController,
-                                  validator: Validation.whatsappValidate,
-                                  keyboardType: TextInputType.phone,
+                                Row(
+                                  children: [
+                                    Container(
+                                      child: CustomTextFormFiled(
+                                        hint: "WhatsApp_number".tr(),
+                                        controller: logic.phoneController,
+                                        validator: Validation.whatsappValidate,
+                                        keyboardType: TextInputType.phone,
+                                      ),
+                                      width: MediaQuery.of(context).size.width -
+                                          150,
+                                    ),
+                                    CountryCodePicker(
+                                      onChanged: (code) {},
+                                      showFlag: false,
+                                      // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                      initialSelection: '+970',
+                                      showFlagDialog: true,
+                                      comparator: (a, b) =>
+                                          b.name!.compareTo(a.name!),
+                                      //Get the country information relevant to the initial selection
+                                      onInit: (code) => print(
+                                          "on init ${code!.name} ${code.dialCode} ${code.name}"),
+                                    ),
+                                  ],
                                 ),
                                 const CustomSizedBox(
                                   height: 10,
@@ -323,18 +347,18 @@ class _DoctorPageState extends State<DoctorPage> {
                                 const CustomSizedBox(
                                   height: 10,
                                 ),
-                                 CustomText("chronic_diseases".tr()),
+                                CustomText("chronic_diseases".tr()),
                                 Row(
                                   children: [
                                     const CustomSizedBox(
                                       width: 10,
                                     ),
-                                     CustomText("blood_pressure".tr()),
+                                    CustomText("blood_pressure".tr()),
                                     Checkbox(
                                         value: logic.bloodPressure,
                                         onChanged: (val) =>
                                             logic.changeDisease(val, 0)),
-                                     CustomText("diabetes".tr()),
+                                    CustomText("diabetes".tr()),
                                     Checkbox(
                                         value: logic.drunken,
                                         onChanged: (val) =>
@@ -346,12 +370,12 @@ class _DoctorPageState extends State<DoctorPage> {
                                     const CustomSizedBox(
                                       width: 10,
                                     ),
-                                     CustomText("sensitive".tr()),
+                                    CustomText("sensitive".tr()),
                                     Checkbox(
                                         value: logic.sensitive,
                                         onChanged: (val) =>
                                             logic.changeDisease(val, 2)),
-                                     CustomText("heart_disease".tr()),
+                                    CustomText("heart_disease".tr()),
                                     Checkbox(
                                         value: logic.heartDisease,
                                         onChanged: (val) =>
@@ -369,13 +393,13 @@ class _DoctorPageState extends State<DoctorPage> {
                                 const CustomSizedBox(
                                   height: 10,
                                 ),
-                                 CustomText("smoked".tr()),
+                                CustomText("smoked".tr()),
                                 Row(
                                   children: [
                                     const CustomSizedBox(
                                       width: 10,
                                     ),
-                                     CustomText("Yes".tr()),
+                                    CustomText("Yes".tr()),
                                     Radio(
                                         value: 3,
                                         groupValue: logic.selectedSmokeValue,
@@ -485,7 +509,7 @@ class _DoctorPageState extends State<DoctorPage> {
                                   height: 10,
                                 ),
                                 Row(
-                                  children:  [
+                                  children: [
                                     const CircleAvatar(
                                       backgroundColor: primaryColor,
                                       radius: 10,
@@ -500,7 +524,7 @@ class _DoctorPageState extends State<DoctorPage> {
                                   height: 10,
                                 ),
                                 Row(
-                                  children:  [
+                                  children: [
                                     const CircleAvatar(
                                       backgroundColor: Colors.blue,
                                       radius: 10,
@@ -530,7 +554,7 @@ class _DoctorPageState extends State<DoctorPage> {
                                   height: 10,
                                 ),
                                 Row(
-                                  children:  [
+                                  children: [
                                     const CircleAvatar(
                                       backgroundColor: primaryColor,
                                       foregroundColor: Colors.white,

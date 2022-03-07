@@ -15,6 +15,7 @@ class InstructionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logic.getInstructions();
+    logic.getInstructionsEn();
     return GetBuilder<InstructionsLogic>(builder: (logic) {
       return Scaffold(
         appBar: AppBar(
@@ -34,7 +35,7 @@ class InstructionsPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       CustomText(
+                      CustomText(
                         "General_Instructions".tr(),
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -44,7 +45,9 @@ class InstructionsPage extends StatelessWidget {
                         height: 10,
                       ),
                       HtmlWidget(
-                        logic.instructions,
+                        context.locale == Locale('en')
+                            ? logic.instructionsEn
+                            : logic.instructions,
                       ),
                     ],
                   ),

@@ -88,7 +88,9 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.share),
                   title:
                       CustomText("share_app".tr(), color: Colors.grey.shade700),
-                  onTap: () {},
+                  onTap: () {
+                    logic.goToUrl();
+                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.location_on),
@@ -100,20 +102,6 @@ class MyDrawer extends StatelessWidget {
                   title: CustomText("General_Instructions".tr(),
                       color: Colors.grey.shade700),
                   onTap: () => logic.goToInstructions(),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: CustomText("Change_language".tr(),
-                      color: Colors.grey.shade700),
-                  onTap: () {
-                    if (context.locale == Locale('en')) {
-                      context.setLocale(Locale('ar'));
-                      RestartWidget.restartApp(context);
-                    } else {
-                      context.setLocale(Locale('en'));
-                      RestartWidget.restartApp(context);
-                    }
-                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout),

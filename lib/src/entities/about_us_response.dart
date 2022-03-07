@@ -3,8 +3,7 @@
 class AboutUsResponse {
   List<AboutDtos>? aboutDtos;
 
-  AboutUsResponse({
-      this.aboutDtos});
+  AboutUsResponse({this.aboutDtos});
 
   AboutUsResponse.fromJson(dynamic json) {
     if (json['aboutDtos'] != null) {
@@ -22,7 +21,6 @@ class AboutUsResponse {
     }
     return map;
   }
-
 }
 
 /// id : 1
@@ -31,21 +29,21 @@ class AboutUsResponse {
 class AboutDtos {
   int? id;
   String? content;
+  String? contentEn;
 
-  AboutDtos({
-      this.id, 
-      this.content});
+  AboutDtos({this.id, this.content, this.contentEn});
 
   AboutDtos.fromJson(dynamic json) {
     id = json['id'];
     content = json['content'];
+    contentEn = json['contentEn'];
   }
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     map['id'] = id;
     map['content'] = content;
+    map['contentEn'] = contentEn;
     return map;
   }
-
 }

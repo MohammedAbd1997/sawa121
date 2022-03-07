@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,7 @@ class OnBoardingPage extends StatelessWidget {
                       logic.update();
                     },
                     itemCount: logic.onBList.length,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (cxn, index) {
                       return Container(
                         padding: EdgeInsets.all(20.sp),
                         alignment: Alignment.center,
@@ -41,7 +42,9 @@ class OnBoardingPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             CustomText(
-                              logic.onBList[index].title,
+                              context.locale == Locale('en')
+                                  ? logic.onBList[index].titleEn
+                                  : logic.onBList[index].title,
                               color: Colors.white,
                               textAlign: TextAlign.center,
                               fontSize: 16,
@@ -56,16 +59,19 @@ class OnBoardingPage extends StatelessWidget {
                                       logic.onBList[index].imgUrl!,
                                   width: 200.sp,
                                   height: 200.sp,
-                                  errorWidget: (_1, _2, _3) =>
-                                      Image.asset("assets/images/logo.png",
-                                        width: 200.sp,
-                                        height: 200.sp,),
+                                  errorWidget: (_1, _2, _3) => Image.asset(
+                                    "assets/images/logo.png",
+                                    width: 200.sp,
+                                    height: 200.sp,
+                                  ),
                                 )),
                             const CustomSizedBox(
                               height: 40,
                             ),
                             CustomText(
-                              logic.onBList[index].description,
+                              context.locale == Locale('en')
+                                  ? logic.onBList[index].descriptionEn
+                                  : logic.onBList[index].description,
                               color: Colors.white,
                               fontSize: 14,
                               textAlign: TextAlign.center,

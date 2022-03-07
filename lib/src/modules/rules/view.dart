@@ -22,6 +22,7 @@ class RulesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logic.getDoctorRules();
+    logic.getDoctorRulesEn();
     return GetBuilder<RulesLogic>(builder: (logic) {
       return Scaffold(
         body: logic.isLoading
@@ -45,13 +46,16 @@ class RulesPage extends StatelessWidget {
                     Expanded(
                         child: SingleChildScrollView(
                             child: HtmlWidget(
-                      logic.rules,
+                      context.locale == Locale('en')
+                          ? logic.rulesEn
+                          : logic.rules,
                     ))),
                     const SizedBox(
                       height: 10,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: kIsWeb ? 30 : 0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: kIsWeb ? 30 : 0),
                       child: Row(
                         children: [
                           GetBuilder<RulesLogic>(builder: (logic) {

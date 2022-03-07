@@ -79,17 +79,18 @@ class MapLogic extends GetxController {
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     Position position = await Geolocator.getCurrentPosition();
+    try {
+      selectedLatLng = LatLng(position.latitude, position.longitude);
+      googleMapController?.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: selectedLatLng!, zoom: 14.0)));
+      myMarkers = <Marker>{};
+      myMarkers.add(
+          Marker(markerId: MarkerId("my marker"), position: selectedLatLng!));
+      update();
 
-    selectedLatLng = LatLng(position.latitude, position.longitude);
-    _googleMapController.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-            target: selectedLatLng!,
-            zoom: 14.0)));
-    myMarkers = <Marker>{};
-    myMarkers.add(Marker(
-        markerId: MarkerId("my marker"),
-        position: selectedLatLng!));
-    update();
+    } catch (e) {
+      log(e.toString());
+    }
     return position;
   }
 
@@ -180,7 +181,8 @@ class MapLogic extends GetxController {
     googleMapController?.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: mLatLag, zoom: 14.0)));
     myMarkers = <Marker>{};
-    myMarkers.add(Marker(markerId: const MarkerId("my marker 2"), position: mLatLag));
+    myMarkers.add(
+        Marker(markerId: const MarkerId("my marker 2"), position: mLatLag));
     update();
   }
 
@@ -189,9 +191,7 @@ class MapLogic extends GetxController {
     update();
     try {
       var res = await _apiRequests.sendReport(
-        categoryId: categoryResponse?.id,
-        latLng: selectedLatLng
-      );
+          categoryId: categoryResponse?.id, latLng: selectedLatLng);
 
       Get.back();
       Get.dialog(const SuccessSendReportDialog());

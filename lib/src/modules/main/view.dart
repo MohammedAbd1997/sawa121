@@ -49,7 +49,7 @@ class MainPage extends StatelessWidget {
                       ),
                       Image.asset(
                         "assets/images/logo.png",
-                        width: 110.w,
+                        width: 90.w,
                       ),
                       const CustomSizedBox(
                         height: 20,
@@ -60,7 +60,7 @@ class MainPage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.sp)),
                         margin: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 10.h),
+                            horizontal: 20.w, vertical: 0.h),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 15.h),
@@ -153,12 +153,13 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(30.sp),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 25.w, vertical: 15.h),
                         child: Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 10.h),
-                              padding: EdgeInsets.all(20.sp),
+                              margin: EdgeInsets.only(top: 5.h),
+                              padding: EdgeInsets.all(15.sp),
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -175,7 +176,7 @@ class MainPage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                   CustomText(
+                                  CustomText(
                                     "type_of_harassment".tr(),
                                     color: Colors.grey,
                                     fontSize: 14,
@@ -198,7 +199,11 @@ class MainPage extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 CustomText(
-                                                  selectedType.name.toString(),
+                                                  context.locale == Locale('en')
+                                                      ? selectedType.nameEn
+                                                          .toString()
+                                                      : selectedType.name
+                                                          .toString(),
                                                   color: Colors.grey.shade700,
                                                   fontSize: 14,
                                                 ),
@@ -217,7 +222,7 @@ class MainPage extends StatelessWidget {
                                   }),
                                   Center(
                                       child: CustomButtonWidget(
-                                        width: 200.w,
+                                          width: 200.w,
                                           title: "Select_your_location".tr(),
                                           radius: 6,
                                           sideIcon:
@@ -250,10 +255,10 @@ class MainPage extends StatelessWidget {
                         child: CustomButtonWidget(
                             title: "Call_Me_back".tr(),
                             width: Get.width * 0.7,
-                            onClick: () => logic.goToUrl()),
+                            onClick: () => logic.goToSendReport()),
                       ),
                       const CustomSizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
                         children: [
@@ -287,9 +292,6 @@ class MainPage extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const CustomSizedBox(
-                                            height: 10,
-                                          ),
                                           CustomText(
                                             "your_doctor".tr(),
                                             fontWeight: FontWeight.bold,
@@ -297,9 +299,6 @@ class MainPage extends StatelessWidget {
                                           CustomText(
                                             "Medical_Consultation".tr(),
                                             color: Colors.grey,
-                                          ),
-                                          const CustomSizedBox(
-                                            height: 10,
                                           ),
                                         ],
                                       ),
@@ -350,7 +349,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       const CustomSizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       Container(
                         padding: EdgeInsets.only(bottom: 40.h),
@@ -387,7 +386,7 @@ class MainPage extends StatelessWidget {
                                         padding: EdgeInsets.all(20.sp),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          children:  [
+                                          children: [
                                             CustomSizedBox(
                                               height: 15,
                                             ),
@@ -436,7 +435,7 @@ class MainPage extends StatelessWidget {
                                         padding: EdgeInsets.all(20.sp),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          children:  [
+                                          children: [
                                             CustomSizedBox(
                                               height: 15,
                                             ),
@@ -502,7 +501,7 @@ class MainPage extends StatelessWidget {
                 child: CustomButtonWidget(
                     title: "Call_Me_back".tr(),
                     width: Get.width * 0.7,
-                    onClick: () => logic.goToUrl()),
+                    onClick: () => logic.goToSendReport()),
               ),
               Row(
                 children: [
