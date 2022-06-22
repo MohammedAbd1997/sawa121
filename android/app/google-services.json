@@ -14,11 +14,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "1016597708125-43ts9p4lelptsnlbn8gul2fi5glt15b2.apps.googleusercontent.com",
+          "client_id": "1016597708125-aacgdb2erhsup789colhu6msmm795raf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mss.sawa",
-            "certificate_hash": "2922b948bfc0095008549e92450d9c700ed21553"
+            "certificate_hash": "0f50003cff68a02a74c0727d1dd6660a1547bed7"
+          }
+        },
+        {
+          "client_id": "1016597708125-e4vgsrqkag30621edtr3nl2sn1069rhl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mss.sawa",
+            "certificate_hash": "e251ed88f695c60558778722049cf6536f33685d"
+          }
+        },
+        {
+          "client_id": "1016597708125-essv68f888h41dgj8mc021od10ojvfj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mss.sawa",
+            "certificate_hash": "ccb3e6cabd060d4252a8f3f46d99171df96e1c12"
           }
         },
         {
@@ -37,6 +53,13 @@
             {
               "client_id": "1016597708125-44mpr2qd4u2kpf9hcnh3qbh5fo12e6tm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1016597708125-3gc3038bsp2o1ksnmbhip4csv75insq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.KhalilSalim.Sawa"
+              }
             }
           ]
         }
